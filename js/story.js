@@ -14,18 +14,14 @@
 const page = {
 	showPage2(){
 		$("#page1").css("display","none")
-		$("#page2").css("display","inline-block")
+		$("#page2").css("display","block")
 		console.log("go to page 2");
 	},
 
 	showPage3(){
 		$("#page2").css("display","none")
-		$("#page3").css("display","inline-block")
+		$("#page3").css("display","block")
 		console.log("go to page three");
-	},
-
-	makePlayer(){
-		console.log("makePlayer");
 	},
 
 	showTableRoom(){
@@ -56,7 +52,7 @@ $("#link1").on("click",() => {
 
 
 $("button").on("click",() => {
-	page.makePlayer()
+	myGame.createPlayer($("input").val())
 	page.showPage3()
 })
 

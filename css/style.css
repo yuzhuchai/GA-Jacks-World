@@ -9,20 +9,21 @@ span{
 
 .story{
 	border: 3px dotted yellow;
-	width: 80%;
-	margin: 100px auto;
+	text-align: center;
+	width: 70%;
+	position: relative;
+	margin: 200px auto;
 	color: white;
-	/*text-align: center;*/
 	display:none;	
 }
 #page1{
 	display: block;
 }
 #page2{
-	/*display: inline-block;*/
+	/*display: block;*/
 }
 #page3{
-	/*display: inline-block;*/
+	/*display: block;*/
 }
 
 
