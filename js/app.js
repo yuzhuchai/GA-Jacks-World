@@ -12,24 +12,20 @@ const myGame = {
 	//game need to decrease the number of turns when space bar and enter keys are pressed 
 	//game need to stop when the turn goes down to 0 and the user loses 
 	//game need to stop when the corrosponding imgs are moved into the correct div, player wins,
-	//player need to move arouns the screen with arrow keys. 
-	movingPlayer(key){
-		console.log(key);
-		if(key === "ArrowUp"){
-			$("#player").animate({top: "-=50px"})
-			console.log("moveup");
-		}else if(key === "ArrowDown"){
-			$("#player").animate({top: "+=50px"})
-			console.log("move down");
-		}else if(key === "ArrowLeft"){
-			$("#player").animate({left: "-=50px"})
-		}else if(key === "ArrowRight"){
-			$("#player").animate({left:"+=50px"})
+
+
+	//player need to pick up the div with space bar. 
+	//looking for the payers position, I am also usign this function to determin the div's position. 
+	findPlayerPosition(key){
+		if(key === "Enter"){
+			console.log($("#player").position().top,$("#player").position().left);
 		}
 	},
 }
 
 
 $(document).on("keydown",(e) => {
-	myGame.movingPlayer(e.key);
+//player need to move arouns the screen with arrow keys. 
+	myGame.player.movingPlayer(e.key);
+	myGame.findPlayerPosition(e.key)
 })
