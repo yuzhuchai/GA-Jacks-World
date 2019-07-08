@@ -10,7 +10,6 @@ class Player{
 
 	//player need to move around in the div 
 	movingPlayer(key){
-		console.log(key);
 		// if($("#player").position().top <= 0 && key === "ArrowUp"){
 		// 	$("#player").animate({top: "+=0px"})
 		// } else if($("#player").position().top >= 550 && key === "ArrowDown"){

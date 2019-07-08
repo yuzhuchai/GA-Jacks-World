@@ -17,14 +17,24 @@ const myGame = {
 	//player need to pick up the div with space bar. 
 	//looking for the payers position, I am also usign this function to determin the div's position. 
 	findPlayerPosition(key){
-		if(key === "Enter"){
-			console.log($("#player").position().top,$("#player").position().left);
+		if(key === " "){
+			const pos =`top ` + $("#player").position().top + ` left ` + $("#player").position().left
+			if($("#player").position().top < 300 && $("#player").position().left < 300){
+				console.log("position 1");
+			}else if($("#player").position().top >= 300 && $("#player").position().left < 300){
+				console.log("position 3");
+			}else if ($("#player").position().top < 300 && $("#player").position().left > 300){
+				console.log("position 2");
+			}else if ($("#player").position().top >= 300 && $("#player").position().left > 300){
+				console.log("position 4");
+			}
 		}
 	},
 }
 
 
 $(document).on("keydown",(e) => {
+	// console.log(e);
 //player need to move arouns the screen with arrow keys. 
 	myGame.player.movingPlayer(e.key);
 	myGame.findPlayerPosition(e.key)
