@@ -115,4 +115,5 @@ span{
 	z-index: 1;
 	position:absolute;
 	color: white;
+	border:3px dotted yellow;
 }
