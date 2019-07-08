@@ -9,6 +9,9 @@
 
 ## Player Stories. 
 
+* player will be given the instructions of the game thruogh a pre-game choose your advanture game. 
+* player will enter a random room of their choice when begin the game by playing the choose your adventure game. 
+
 * player can only see one room at a time. they will be travelling between rooms through a door.
 * player can exit the room and enter the next room through doors with return keys 
 * player can move around with the arrow keys 
