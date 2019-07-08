@@ -1,0 +1,92 @@
+body{
+	background-color: 
+}
+
+
+.story{
+	display:hide;
+}
+
+
+#gamePage{
+	border: 3px dotted black;
+	width: 600px;
+	height:660px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+#metersContainer{
+	border:3px dotted red;
+	width: 600px;
+	height: 100px;
+	display: flex;
+	justify-content: space-around;
+}
+
+#turn{
+	border:3px dotted blue;
+	width: 70px;
+	height: 70px;
+	margin: auto 0;
+}
+
+#inventory{
+	border: 3px dotted blue;
+	width:100px;
+	height: 100px;
+}
+
+#roomsContainer{
+	border:3px dotted red;
+	width: 600px;
+	height: 560px;
+	position:relative;
+	/*margin-top: 100px;*/
+}
+
+.rooms{
+	border:3px dotted green;
+	width: 600px;
+	height: 560px;
+	position: relative;
+	display:none;
+}
+
+#tableRoom{
+	/*display: block;*/
+}
+#chairRoom{
+	/*display: block;*/
+}
+#vaseRoom{
+	/*display:block;*/
+}
+
+
+.space{
+	border:3px dotted purple;
+	width: 300px;
+	height: 280px;
+	position: absolute;
+	/*margin:auto;*/
+	display: inline-block;
+}
+
+
+.no2{
+	left: 300px;
+}
+.no3{
+	left:0;
+	top:280px;
+}
+.no4{
+	left:300px;
+	top:280px;
+}
+
+#player{
+	position:absolute;
+}

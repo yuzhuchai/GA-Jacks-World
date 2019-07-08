@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Jack's World</title>
-
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -18,8 +18,8 @@
 	<div id="gamePage">
 		<!-- meters and they will always be stuck to the top of the screen  -->
 		<div id="metersContainer">
-			<div class="meters" id="turn"></div>
-			<div class="meters" id="inventory"></div>
+			<div class="meter" id="turn">10</div>
+			<div class="meter" id="inventory"></div>
 		</div>
 
 
@@ -31,24 +31,24 @@
 
 			<!-- room div always at beneath the player -->
 			<div class="rooms" id="tableRoom">
-				<div class="space" id="table1"></div>
-				<div class="space" id="table2"></div>
-				<div class="space" id="table3"></div>
-				<div class="space" id="table4"></div>
+				<div class="space no1" id="table1">tableroom1</div>
+				<div class="space no2" id="table2">tableroom2</div>
+				<div class="space no3" id="table3">tableroom3</div>
+				<div class="space no4" id="table4">tableroom4</div>
 			</div>
 
-			<div class="rooms" id="deskRoom">
-				<div class="space" id="desk1"></div>
-				<div class="space" id="desk2"></div>
-				<div class="space" id="desk3"></div>
-				<div class="space" id="desk4"></div>
+			<div class="rooms" id="chairRoom">
+				<div class="space no1" id="chairs1">chairroom1</div>
+				<div class="space no2" id="chairs2">chairroom2</div>
+				<div class="space no3" id="chairs3">chairroom3</div>
+				<div class="space no4" id="chairs4">chairroom4</div>
 			</div>
 
 			<div class="rooms" id="vaseRoom">
-				<div class="space" id="vase1"></div>
-				<div class="space" id="vase2"></div>
-				<div class="space" id="vase3"></div>
-				<div class="space" id="vase4"></div>
+				<div class="space no1" id="vase1">vaseroom1</div>
+				<div class="space no2" id="vase2">vaseroom2</div>
+				<div class="space no3" id="vase3">vaseroom3</div>
+				<div class="space no4" id="vase4">vaseroom4</div>
 			</div>
 		</div>
 	</div>
