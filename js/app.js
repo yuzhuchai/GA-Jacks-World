@@ -17,6 +17,7 @@ const myGame = {
 	startGame(){
 	this.randomizeItems()
 	this.getNumberOfTurns()
+	this.showRooms()
 	},
 
 	shuffleImgArr(){
@@ -41,14 +42,13 @@ const myGame = {
 	//game need to get a random number of turns between 15-20
 	getNumberOfTurns(){
 		this.turns = Math.floor(Math.random()*5)+15
-		$("#turn").text(this.turns)
+		// $("#turn").text(this.turns)
 
 	},
 	//game need to decrease the number of turns when space bar and enter keys are pressed 
 	decreaseTurns(key){
 		if(key === " " || key === "Enter"){
 			this.turns -=1 
-			$("#turn").text(this.turns)
 		}
 		this.loseGame()
 	},
@@ -72,6 +72,7 @@ const myGame = {
 		if ($("#vaseRoom").css("display") === "block"){
 			this.currentRoom = "vase"
 		}
+		$("#theRoom").text(`room of ${this.currentRoom}`)
 	},
 	//looking for the payers position, I am also usign this function to determin the div's position. 
 	findPlayerPosition(key){
@@ -110,13 +111,17 @@ const myGame = {
 			$("#vaseRoom").css("display","none")
 			$("#tableRoom").css("display","block")
 		}
-	}
+	},
 }
 
 
 $(document).on("keydown",(e) => {
+	$("#player").text(myGame.playerName)
+	if (e.keyCode === 32 || e.keyCode === 13 || (e.keyCode > 36 && e.keyCode < 41)){
+		$("#turn").text(myGame.turns)
+	}
 	// console.log(e);
-//player need to move arouns the screen with arrow keys. 
+	//player need to move arouns the screen with arrow keys. 
 	myGame.player.movingPlayer(e.key);
 	myGame.findPlayerPosition(e.key)
 	myGame.decreaseTurns(e.key)

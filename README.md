@@ -13,6 +13,7 @@
 * player will enter a random room of their choice when begin the game by playing the choose your adventure game. 
 
 * player can only see one room at a time. they will be travelling between rooms through a door.
+* the door only opens to the next room, think of the rooms as if they are connected in a circle. 
 * player can exit the room and enter the next room through doors with return keys 
 * player can move around with the arrow keys 
 * player can only move one item at a time, and the items can only be dropped at the empty spaces in each rooms.

@@ -9,7 +9,7 @@ class Player{
 
 	initPlayer(){
 		console.log("player is created");
-		$("#player").text(this.name)
+		$("#player").text(`${this.name} is in the`)
 	}
 
 	//player need to move around in the div 
