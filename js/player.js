@@ -32,4 +32,4 @@ class Player{
 	}
 }
 
-const imgArr = ["url(pics/01)","url(pics/02)","url(pics/03)","url(pics/04)","url(pics/05)","url(pics/06)","url(pics/07)","url(pics/08)","url(pics/09)","","",""]
+const imgArr = ["url(pics/01.png)","url(pics/02.png)","url(pics/03.png)","url(pics/04.png)","url(pics/05.png)","url(pics/06.png)","url(pics/07.png)","url(pics/08.png)","url(pics/09.png)","","",""]

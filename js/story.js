@@ -58,12 +58,15 @@ $("button").on("click",() => {
 
 $("#linkTableRoom").on("click",() => {
 	page.showTableRoom()
+	myGame.randomizeItems()
 })
 
 $("#linkVaseRoom").on("click",() => {
 	page.showVaseRoom()
+	myGame.randomizeItems()
 })
 
 $("#linkChairRoom").on("click",() => {
 	page.showChairRoom()
+	myGame.randomizeItems()
 })
