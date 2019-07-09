@@ -76,7 +76,7 @@ const myGame = {
 		if ($("#vaseRoom").css("display") === "block"){
 			this.currentRoom = "vase"
 		}
-		$("#theRoom").text(`room of ${this.currentRoom}`)
+		$("#theRoom").text(`room of ${this.currentRoom}s`)
 	},
 	//looking for the payers position, I am also usign this function to determin the div's position. 
 	findPlayerPosition(key){
@@ -116,6 +116,13 @@ const myGame = {
 			$("#tableRoom").css("display","block")
 		}
 	},
+
+	showInventroy(key){
+		if(key === " "){
+			$("#inventory").css("background-image",this.inventory)
+			console.log($("#inventory").css("background-image"));
+		}
+	}
 }
 
 
@@ -129,6 +136,7 @@ $(document).on("keydown",(e) => {
 	myGame.pickUpItem(e.key)
 	myGame.movingThroughRooms(e.key)
 	myGame.showRooms()
+	myGame.showInventroy(e.key)
 	// myGame.pickUpItem(e.key)
 	// myGame.pickUpItem(e.key)
 })
