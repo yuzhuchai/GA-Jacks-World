@@ -127,6 +127,6 @@ input {
 	z-index: 1;
 	position:absolute;
 	color: white;
-	/*left:400px;*/
+	top:-100px;
 	/*border:3px dotted yellow;*/
 }
