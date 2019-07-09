@@ -15,9 +15,9 @@ const myGame = {
 //write a loop that run 12 times. each time push a random index item in the old array into the new array. 
 
 	startGame(){
-	this.randomizeItems()
-	this.getNumberOfTurns()
-	this.showRooms()
+		this.randomizeItems()
+		this.getNumberOfTurns()
+		this.showRooms()
 	},
 
 	shuffleImgArr(){
@@ -91,15 +91,15 @@ const myGame = {
 	},
 //you also drop items here
 	pickUpItem(key){
-		if(this.currentRoom === "table" && key === " " && this.inventory === "none"){
+		if(this.currentRoom === "table" && key === " " && this.inventory === "none" && $(`#div${this.playerPos-1}`).css("background-image") !== "none"){
 			this.inventory = $(`#div${this.playerPos-1}`).css("background-image")
 			$(`#div${this.playerPos-1}`).css("background-image","none")
 			this.decreaseTurns(key)
-		}else if (this.currentRoom === "chair" && key === " " && this.inventory === "none"){
+		}else if (this.currentRoom === "chair" && key === " " && this.inventory === "none" && $(`#div${this.playerPos+3}`).css("background-image") !== "none"){
 			this.inventory = $(`#div${this.playerPos+3}`).css("background-image")
 			$(`#div${this.playerPos+3}`).css("background-image","none")
 			this.decreaseTurns(key)
-		}else if (this.currentRoom === "vase" && key === " " && this.inventory === "none"){
+		}else if (this.currentRoom === "vase" && key === " " && this.inventory === "none" && $(`#div${this.playerPos+7}`).css("background-image") !== "none"){
 			this.inventory = $(`#div${this.playerPos+7}`).css("background-image")
 			$(`#div${this.playerPos+7}`).css("background-image","none")
 			this.decreaseTurns(key)
@@ -141,24 +141,18 @@ const myGame = {
 		}
 	},
 
-	dropItems(key){
-		
-	},
+
 }
 
 
 $(document).on("keydown",(e) => {
 	$("#player").text(myGame.playerName)
-	console.log(e);
+	// console.log(e);
 	//player need to move arouns the screen with arrow keys. 
 	myGame.player.movingPlayer(e.key);
 	myGame.findPlayerPosition(e.key)
-	// myGame.decreaseTurns(e.key)
 	myGame.pickUpItem(e.key)
 	myGame.movingThroughRooms(e.key)
 	myGame.showRooms()
 	myGame.showInventroy(e.key)
-	myGame.dropItems(e.key)
-	// myGame.pickUpItem(e.key)
-	// myGame.pickUpItem(e.key)
 })
