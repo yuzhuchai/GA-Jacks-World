@@ -81,9 +81,12 @@ input {
 	/*border: 3px dotted blue;*/
 	width:100px;
 	height: 100px;
-	background-image: url("pics/00.png");
-	background-size: 100px;
 	/*background-color: blue*/
+}
+
+img{
+	width: 100%;
+	height: 100%
 }
 #roomsContainer{
 	/*border:3px dotted red;*/
@@ -112,6 +115,7 @@ input {
 
 .space{
 	border:5px double hotpink;
+	border-radius: 20px;
 	width: 300px;
 	height: 280px;
 	position: absolute;

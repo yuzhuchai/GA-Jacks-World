@@ -2,7 +2,7 @@ const myGame = {
 	playerName: null,
 	player: null,
 	//storing images as objects to use in css later. 
-	inventory: "none",
+	inventory: "",
 	shuffledImg: [],
 	turns: 20,
 	playerPos:"",
@@ -29,14 +29,23 @@ const myGame = {
 		}
 	},
 
-	//user flow. game need to put all the images into the div.
+/*	//user flow. game need to put all the images into the div.
 	randomizeItems(){
 		this.shuffleImgArr()
 		this.shuffledImg.forEach((str,i) => {
 			// console.log($(`#div${i}`));
-			console.log(str,i);
+			// console.log(str,i);
 			$(`#div${i}`).css("background-image",str)
-			console.log($(`#div${i}`).css("background-image"));
+			// console.log($(`#div${i}`).css("background-image"));
+		})
+	},
+
+*/
+	randomizeItems(){
+		this.shuffleImgArr()
+		this.shuffledImg.forEach((str,i) => {
+			let picc = $(`<img id=${str} src="./pics/0${str[1]}.png">`)
+			$(`#div${i}`).append(picc)
 		})
 	},
 	//game need to get a random number of turns between 15-20
@@ -91,29 +100,32 @@ const myGame = {
 	},
 //you also drop items here
 	pickUpItem(key){
-		if(this.currentRoom === "table" && key === " " && this.inventory === "none" && $(`#div${this.playerPos-1}`).css("background-image") !== "none"){
-			this.inventory = $(`#div${this.playerPos-1}`).css("background-image")
-			$(`#div${this.playerPos-1}`).css("background-image","none")
+		if(this.currentRoom === "table" && key === " " && this.inventory === "" && $(`#div${this.playerPos-1}`).children().attr("id") !== "i0"){
+			this.inventory = $(`#div${this.playerPos-1}`).children()
+			$(`#div${this.playerPos-1}`).append($(`<img id=i0 src="./pics/00.png">`))
 			this.decreaseTurns()
-		}else if (this.currentRoom === "chair" && key === " " && this.inventory === "none" && $(`#div${this.playerPos+3}`).css("background-image") !== "none"){
-			this.inventory = $(`#div${this.playerPos+3}`).css("background-image")
-			$(`#div${this.playerPos+3}`).css("background-image","none")
+		}else if (this.currentRoom === "chair" && key === " " && this.inventory === "" && $(`#div${this.playerPos+3}`).children().attr("id") !== "i0"){
+			this.inventory = $(`#div${this.playerPos+3}`).children()
+			$(`#div${this.playerPos+3}`).append($(`<img id=i0 src="./pics/00.png">`))
 			this.decreaseTurns()
-		}else if (this.currentRoom === "vase" && key === " " && this.inventory === "none" && $(`#div${this.playerPos+7}`).css("background-image") !== "none"){
-			this.inventory = $(`#div${this.playerPos+7}`).css("background-image")
-			$(`#div${this.playerPos+7}`).css("background-image","none")
+		}else if (this.currentRoom === "vase" && key === " " && this.inventory === "" && $(`#div${this.playerPos+7}`).children().attr("id") !== "i0"){
+			this.inventory = $(`#div${this.playerPos+7}`).children()
+			$(`#div${this.playerPos+7}`).append($(`<img id=i0 src="./pics/00.png">`))
 			this.decreaseTurns()
-		} else if(key === " " && this.currentRoom === "table" && this.inventory !== "none" && $(`#div${this.playerPos-1}`).css("background-image") === "none"){
-			$(`#div${this.playerPos-1}`).css("background-image",this.inventory)
-			this.inventory = "none"
+		} else if(key === " " && this.currentRoom === "table" && this.inventory !== "" && $(`#div${this.playerPos-1}`).children().attr("id") === "i0"){
+			$(`#div${this.playerPos-1}`).children().remove()
+			$(`#div${this.playerPos-1}`).append(this.inventory)
+			this.inventory = ""
 			this.decreaseTurns()
-		} else if(key === " " && this.currentRoom === "chair" && this.inventory !== "none" && $(`#div${this.playerPos+3}`).css("background-image") === "none"){
-			$(`#div${this.playerPos+3}`).css("background-image",this.inventory)
-			this.inventory = "none"
+		} else if(key === " " && this.currentRoom === "chair" && this.inventory !== "" && $(`#div${this.playerPos+3}`).children().attr("id") === "i0"){
+			$(`#div${this.playerPos+3}`).children().remove()
+			$(`#div${this.playerPos+3}`).append(this.inventory)
+			this.inventory = ""
 			this.decreaseTurns()
-		} else if(key === " " && this.currentRoom === "vase" && this.inventory !== "none" && $(`#div${this.playerPos+7}`).css("background-image") === "none"){
-			$(`#div${this.playerPos+7}`).css("background-image",this.inventory)
-			this.inventory = "none"
+		} else if(key === " " && this.currentRoom === "vase" && this.inventory !== "" && $(`#div${this.playerPos+7}`).children().attr("id") === "i0"){
+			$(`#div${this.playerPos+7}`).children().remove()
+			$(`#div${this.playerPos+7}`).append(this.inventory)
+			this.inventory = ""
 			this.decreaseTurns()
 		} 
 	},
@@ -136,12 +148,15 @@ const myGame = {
 
 	showInventroy(key){
 		if(key === " "){
-			$("#inventory").css("background-image",this.inventory)
-			console.log($("#inventory").css("background-image"));
+			$("#inventory").append(this.inventory)
 		}
 	},
+//check after every action, 
+//push img name in the div into arrays. and compare the arry. so when the item dropps,push the name into array. 
+	checkWin(){
+		// if ()
 
-
+	},
 }
 
 
