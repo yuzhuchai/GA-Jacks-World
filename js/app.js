@@ -17,7 +17,6 @@ const myGame = {
 	startGame(){
 	this.randomizeItems()
 	this.getNumberOfTurns()
-	this.showRooms()
 	},
 
 	shuffleImgArr(){
@@ -90,16 +89,28 @@ const myGame = {
 	},
 
 	pickUpItem(key){
-			if(this.currentRoom === "table" && key === " "){
-				console.log($(`#div${this.playerPos-1}`).css("background-image"));
-				this.inventory = $(`#div${this.playerPos-1}`).css("background-image")
-			}else if (this.currentRoom === "chair" && key === " "){
-				this.inventory = $(`#div${this.playerPos+3}`).css("background-image")
-			}else if (this.currentRoom === "vase" && key === " "){
-				this.inventory = $(`#div${this.playerPos+7}`).css("background-image")
-			}
-
+		if(this.currentRoom === "table" && key === " "){
+			console.log($(`#div${this.playerPos-1}`).css("background-image"));
+			this.inventory = $(`#div${this.playerPos-1}`).css("background-image")
+		}else if (this.currentRoom === "chair" && key === " "){
+			this.inventory = $(`#div${this.playerPos+3}`).css("background-image")
+		}else if (this.currentRoom === "vase" && key === " "){
+			this.inventory = $(`#div${this.playerPos+7}`).css("background-image")
+		}
 	},
+
+	movingThroughRooms(key){
+		if(this.currentRoom === "table" && key === "Enter"){
+			$("#tableRoom").css("display","none")
+			$("#chairRoom").css("display","block")
+		}else if(this.currentRoom === "chair" && key === "Enter"){
+			$("#chairRoom").css("display","none")
+			$("#vaseRoom").css("display","block")
+		}else if (this.currentRoom === "vase" && key === "Enter"){
+			$("#vaseRoom").css("display","none")
+			$("#tableRoom").css("display","block")
+		}
+	}
 }
 
 
@@ -110,6 +121,8 @@ $(document).on("keydown",(e) => {
 	myGame.findPlayerPosition(e.key)
 	myGame.decreaseTurns(e.key)
 	myGame.pickUpItem(e.key)
+	myGame.movingThroughRooms(e.key)
+	myGame.showRooms()
 	// myGame.pickUpItem(e.key)
 	// myGame.pickUpItem(e.key)
 })
