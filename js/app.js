@@ -50,12 +50,16 @@ const myGame = {
 		if(key === " " || key === "Enter"){
 			this.turns -=1 
 		}
+		$("#turn").text(this.turns)
 		this.loseGame()
 	},
 	//game need to stop when the turn goes down to 0 and the user loses 
 	loseGame(){
 		if(this.turns === 0){
 			alert(`game over`)
+			$("#page3").show()
+			$(`#${this.currentRoom}Room`).hide()
+			$("#gamePage").hide()
 		}
 	},
 	//game need to stop when the corrosponding imgs are moved into the correct div, player wins,
@@ -117,9 +121,6 @@ const myGame = {
 
 $(document).on("keydown",(e) => {
 	$("#player").text(myGame.playerName)
-	if (e.keyCode === 32 || e.keyCode === 13 || (e.keyCode > 36 && e.keyCode < 41)){
-		$("#turn").text(myGame.turns)
-	}
 	// console.log(e);
 	//player need to move arouns the screen with arrow keys. 
 	myGame.player.movingPlayer(e.key);
