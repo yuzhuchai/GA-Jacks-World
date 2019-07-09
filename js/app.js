@@ -6,6 +6,7 @@ const myGame = {
 	shuffledImg: [],
 	turns: 20,
 	playerPos:"",
+	tableArray: ["a","a","a","i"],
 	createPlayer(name){
 		this.playerName = name 
 		this.player = new Player(name)
@@ -29,18 +30,6 @@ const myGame = {
 		}
 	},
 
-/*	//user flow. game need to put all the images into the div.
-	randomizeItems(){
-		this.shuffleImgArr()
-		this.shuffledImg.forEach((str,i) => {
-			// console.log($(`#div${i}`));
-			// console.log(str,i);
-			$(`#div${i}`).css("background-image",str)
-			// console.log($(`#div${i}`).css("background-image"));
-		})
-	},
-
-*/
 	randomizeItems(){
 		this.shuffleImgArr()
 		this.shuffledImg.forEach((str,i) => {
@@ -67,6 +56,7 @@ const myGame = {
 		if(this.turns === 0){
 			alert(`game over`)
 		}
+
 	},
 	//game need to stop when the corrosponding imgs are moved into the correct div, player wins,
 
@@ -154,16 +144,40 @@ const myGame = {
 //check after every action, 
 //push img name in the div into arrays. and compare the arry. so when the item dropps,push the name into array. 
 	checkWin(){
-		// if ()
+		let t = $("#tableRoom").children()
+		let c = $("#chairRoom").children()
+		let v = $("#vaseRoom").children()
+		console.log(t[1]);
+		// for(let i = 0; i < 4; i++){
+		// 	${t[i]}.children()
+		// }
+/*
+		this.tArr = t.forEach((obj) => {
+			$(obj).children().attr("id")[0]
+		}).sort()
 
+		if (tArr === tableArray){
+			alert(`you win!`)
+		} 
+
+		this.cArr = c.forEach((obj) => {
+			$(obj).children().attr("id")[0]
+		})
+
+		this.vArr = v.forEach((obj) => {
+			$(obj).children().attr("id")[0]
+		})
+		*/
 	},
+
 }
 
 
 $(document).on("keydown",(e) => {
-	$("#player").text(myGame.playerName)
+	$("#player").html(`${myGame.playerName}<br/><img id="playerbody" src="pics/body.png"/>`)
 	// console.log(e);
 	//player need to move arouns the screen with arrow keys. 
+	// myGame.checkWin()
 	myGame.player.movingPlayer(e.key);
 	myGame.findPlayerPosition(e.key)
 	myGame.pickUpItem(e.key)

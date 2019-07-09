@@ -1,6 +1,6 @@
 // const imgArr = ["url(pics/01.png)","url(pics/02.png)","url(pics/03.png)","url(pics/04.png)","url(pics/05.png)","url(pics/06.png)","url(pics/07.png)","url(pics/08.png)","url(pics/09.png)","none","none","none"]
 
-const imgArr = ["i1","i2","i3","i4","i5","i6","i7","i8","i9","i0","i0","i0"]
+const imgArr = ["a1","a2","a3","b4","b5","b6","c7","c8","c9","i0","i0","i0"]
 
 
 
