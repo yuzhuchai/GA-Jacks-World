@@ -46,10 +46,10 @@ const myGame = {
 
 	},
 	//game need to decrease the number of turns when space bar and enter keys are pressed 
-	decreaseTurns(key){
-		if(key === " " || key === "Enter"){
+	decreaseTurns(){
+		//if(key === " " || key === "Enter"){
 			this.turns -=1 
-		}
+		//}
 		$("#turn").text(this.turns)
 		this.loseGame()
 	},
@@ -94,27 +94,27 @@ const myGame = {
 		if(this.currentRoom === "table" && key === " " && this.inventory === "none" && $(`#div${this.playerPos-1}`).css("background-image") !== "none"){
 			this.inventory = $(`#div${this.playerPos-1}`).css("background-image")
 			$(`#div${this.playerPos-1}`).css("background-image","none")
-			this.decreaseTurns(key)
+			this.decreaseTurns()
 		}else if (this.currentRoom === "chair" && key === " " && this.inventory === "none" && $(`#div${this.playerPos+3}`).css("background-image") !== "none"){
 			this.inventory = $(`#div${this.playerPos+3}`).css("background-image")
 			$(`#div${this.playerPos+3}`).css("background-image","none")
-			this.decreaseTurns(key)
+			this.decreaseTurns()
 		}else if (this.currentRoom === "vase" && key === " " && this.inventory === "none" && $(`#div${this.playerPos+7}`).css("background-image") !== "none"){
 			this.inventory = $(`#div${this.playerPos+7}`).css("background-image")
 			$(`#div${this.playerPos+7}`).css("background-image","none")
-			this.decreaseTurns(key)
+			this.decreaseTurns()
 		} else if(key === " " && this.currentRoom === "table" && this.inventory !== "none" && $(`#div${this.playerPos-1}`).css("background-image") === "none"){
 			$(`#div${this.playerPos-1}`).css("background-image",this.inventory)
 			this.inventory = "none"
-			this.decreaseTurns(key)
+			this.decreaseTurns()
 		} else if(key === " " && this.currentRoom === "chair" && this.inventory !== "none" && $(`#div${this.playerPos+3}`).css("background-image") === "none"){
 			$(`#div${this.playerPos+3}`).css("background-image",this.inventory)
 			this.inventory = "none"
-			this.decreaseTurns(key)
+			this.decreaseTurns()
 		} else if(key === " " && this.currentRoom === "vase" && this.inventory !== "none" && $(`#div${this.playerPos+7}`).css("background-image") === "none"){
 			$(`#div${this.playerPos+7}`).css("background-image",this.inventory)
 			this.inventory = "none"
-			this.decreaseTurns(key)
+			this.decreaseTurns()
 		} 
 	},
 
@@ -122,15 +122,15 @@ const myGame = {
 		if(this.currentRoom === "table" && key === "Enter"){
 			$("#tableRoom").css("display","none")
 			$("#chairRoom").css("display","block")
-			this.decreaseTurns(key)
+			this.decreaseTurns()
 		}else if(this.currentRoom === "chair" && key === "Enter"){
 			$("#chairRoom").css("display","none")
 			$("#vaseRoom").css("display","block")
-			this.decreaseTurns(key)
+			this.decreaseTurns()
 		}else if (this.currentRoom === "vase" && key === "Enter"){
 			$("#vaseRoom").css("display","none")
 			$("#tableRoom").css("display","block")
-			this.decreaseTurns(key)
+			this.decreaseTurns()
 		}
 	},
 
