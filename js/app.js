@@ -2,7 +2,7 @@ const myGame = {
 	playerName: null,
 	player: null,
 	//storing images as objects to use in css later. 
-	inventory: "",
+	inventory: "none",
 	shuffledImg: [],
 	turns: 20,
 	playerPos:"",
@@ -57,9 +57,6 @@ const myGame = {
 	loseGame(){
 		if(this.turns === 0){
 			alert(`game over`)
-			$("#page3").show()
-			$(`#${this.currentRoom}Room`).hide()
-			$("#gamePage").hide()
 		}
 	},
 	//game need to stop when the corrosponding imgs are moved into the correct div, player wins,
@@ -92,28 +89,48 @@ const myGame = {
 			}
 		}
 	},
-
+//you also drop items here
 	pickUpItem(key){
-		if(this.currentRoom === "table" && key === " "){
-			console.log($(`#div${this.playerPos-1}`).css("background-image"));
+		if(this.currentRoom === "table" && key === " " && this.inventory === "none"){
 			this.inventory = $(`#div${this.playerPos-1}`).css("background-image")
-		}else if (this.currentRoom === "chair" && key === " "){
+			$(`#div${this.playerPos-1}`).css("background-image","none")
+			this.decreaseTurns(key)
+		}else if (this.currentRoom === "chair" && key === " " && this.inventory === "none"){
 			this.inventory = $(`#div${this.playerPos+3}`).css("background-image")
-		}else if (this.currentRoom === "vase" && key === " "){
+			$(`#div${this.playerPos+3}`).css("background-image","none")
+			this.decreaseTurns(key)
+		}else if (this.currentRoom === "vase" && key === " " && this.inventory === "none"){
 			this.inventory = $(`#div${this.playerPos+7}`).css("background-image")
-		}
+			$(`#div${this.playerPos+7}`).css("background-image","none")
+			this.decreaseTurns(key)
+		} else if(key === " " && this.currentRoom === "table" && this.inventory !== "none" && $(`#div${this.playerPos-1}`).css("background-image") === "none"){
+			$(`#div${this.playerPos-1}`).css("background-image",this.inventory)
+			this.inventory = "none"
+			this.decreaseTurns(key)
+		} else if(key === " " && this.currentRoom === "chair" && this.inventory !== "none" && $(`#div${this.playerPos+3}`).css("background-image") === "none"){
+			$(`#div${this.playerPos+3}`).css("background-image",this.inventory)
+			this.inventory = "none"
+			this.decreaseTurns(key)
+		} else if(key === " " && this.currentRoom === "vase" && this.inventory !== "none" && $(`#div${this.playerPos+7}`).css("background-image") === "none"){
+			$(`#div${this.playerPos+7}`).css("background-image",this.inventory)
+			this.inventory = "none"
+			this.decreaseTurns(key)
+		} 
 	},
 
 	movingThroughRooms(key){
 		if(this.currentRoom === "table" && key === "Enter"){
 			$("#tableRoom").css("display","none")
 			$("#chairRoom").css("display","block")
+			this.decreaseTurns(key)
 		}else if(this.currentRoom === "chair" && key === "Enter"){
 			$("#chairRoom").css("display","none")
 			$("#vaseRoom").css("display","block")
+			this.decreaseTurns(key)
 		}else if (this.currentRoom === "vase" && key === "Enter"){
 			$("#vaseRoom").css("display","none")
 			$("#tableRoom").css("display","block")
+			this.decreaseTurns(key)
 		}
 	},
 
@@ -122,21 +139,26 @@ const myGame = {
 			$("#inventory").css("background-image",this.inventory)
 			console.log($("#inventory").css("background-image"));
 		}
-	}
+	},
+
+	dropItems(key){
+		
+	},
 }
 
 
 $(document).on("keydown",(e) => {
 	$("#player").text(myGame.playerName)
-	// console.log(e);
+	console.log(e);
 	//player need to move arouns the screen with arrow keys. 
 	myGame.player.movingPlayer(e.key);
 	myGame.findPlayerPosition(e.key)
-	myGame.decreaseTurns(e.key)
+	// myGame.decreaseTurns(e.key)
 	myGame.pickUpItem(e.key)
 	myGame.movingThroughRooms(e.key)
 	myGame.showRooms()
 	myGame.showInventroy(e.key)
+	myGame.dropItems(e.key)
 	// myGame.pickUpItem(e.key)
 	// myGame.pickUpItem(e.key)
 })
