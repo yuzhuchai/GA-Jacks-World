@@ -31,3 +31,5 @@ class Player{
 		// }
 	}
 }
+
+const imgArr = ["url(pics/01)","url(pics/02)","url(pics/03)","url(pics/04)","url(pics/05)","url(pics/06)","url(pics/07)","url(pics/08)","url(pics/09)","","",""]
