@@ -1,6 +1,9 @@
 body{
 	background-color: #1e203a;
 	/*text-align: center;*/
+	font-family: 'Bahianita', cursive;
+	font-size: 50px;
+	font-weight: bold;
 }
 
 span{
@@ -8,13 +11,14 @@ span{
 }
 
 .story{
-	border: 3px dotted yellow;
+	/*border: 3px dotted yellow;*/
 	text-align: center;
 	width: 70%;
 	position: relative;
 	margin: 200px auto;
-	color: white;
-	display:none;	
+	color: black;
+	display:none;
+	font-size: 30px;	
 }
 #page1{
 	display: block;
@@ -27,13 +31,21 @@ span{
 }
 
 
+input, button, input.inputbox, textarea{
+	font-size: 30px;
+	font-family: 'Bahianita', cursive;
+	font-weight: bold;
+	background-color: #1e203a;
+}
 
-
-
+input {
+	width: 250px;
+	text-align: center;
+}
 
 
 #gamePage{
-	border: 3px dotted black;
+	/*border: 3px dotted black;*/
 	width: 600px;
 	height:660px;
 	margin: auto;
@@ -43,7 +55,7 @@ span{
 	flex-direction: column;
 }
 #metersContainer{
-	border:3px dotted red;
+	/*border:3px dotted red;*/
 	width: 600px;
 	height: 100px;
 	display: flex;
@@ -51,7 +63,7 @@ span{
 }
 
 #turn{
-	border:3px dotted blue;
+	/*border:3px dotted blue;*/
 	width: 70px;
 	height: 70px;
 	margin: auto 0;
@@ -59,19 +71,19 @@ span{
 	/*text-align: center;*/
 }
 #inventory{
-	border: 3px dotted blue;
+	/*border: 3px dotted blue;*/
 	width:100px;
 	height: 100px;
 }
 #roomsContainer{
-	border:3px dotted red;
+	/*border:3px dotted red;*/
 	width: 600px;
 	height: 560px;
 	position:relative;
 	/*margin-top: 100px;*/
 }
 .rooms{
-	border:3px dotted green;
+	/*border:3px dotted green;*/
 	width: 600px;
 	height: 560px;
 	position: relative;
@@ -89,7 +101,7 @@ span{
 
 
 .space{
-	border:3px dotted purple;
+	/*border:3px dotted purple;*/
 	width: 300px;
 	height: 280px;
 	position: absolute;
@@ -115,5 +127,5 @@ span{
 	z-index: 1;
 	position:absolute;
 	color: white;
-	border:3px dotted yellow;
+	/*border:3px dotted yellow;*/
 }
