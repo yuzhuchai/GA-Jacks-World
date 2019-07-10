@@ -45,8 +45,8 @@ const myGame = {
 	},
 	//game need to get a random number of turns between 20-25
 	getNumberOfTurns(){
-		this.turns = Math.floor(Math.random()*5)+1
-		// $("#turn").text(this.turns)
+		this.turns = Math.floor(Math.random()*5)+50
+		$("#turn").text(this.turns)
 
 	},
 	//game need to decrease the number of turns when space bar and enter keys are pressed 
@@ -60,7 +60,7 @@ const myGame = {
 	//game need to stop when the turn goes down to 0 and the user loses 
 	loseGame(){
 		if(this.turns === 0){
-			this.status = "lost"
+			this.status = "did a bad job!"
 			this.restartGame()
 		}
 
@@ -170,7 +170,7 @@ const myGame = {
 			let ccheck = cArr.sort().join("")
 			let vcheck = vArr.sort().join("")
 			if( tcheck === this.tableStr && ccheck === this.chairStr && vcheck === this.vaseStr){
-				this.status = "won!!"
+				this.status = "finally rearranged everything!!!"
 				console.log(this.status);
 				this.restartGame()
 			}
@@ -178,46 +178,40 @@ const myGame = {
 	},
 
 	restartGame(){
-			this.imgArr = ["a1","a2","a3","b4","b5","b6","c7","c8","c9","i0","i0","i0"]
-			this.shuffledImg = []
-			this.inventory = ""
-			$("#inventory").children().remove()
+		this.imgArr = ["a1","a2","a3","b4","b5","b6","c7","c8","c9","i0","i0","i0"]
+		this.shuffledImg = []
+		this.inventory = ""
+		$("#inventory").children().remove()
 		for (let i = 0; i < 12; i++){
 			$(`#div${i}`).children().remove()
 		}
-			$("#gamePage").hide()
-			$("#tableRoom").hide()
-			$("#chairRoom").hide()
-			$("#vaseRoom").hide()
-			$("#page4").css("display","block")
-			$("#result").text(this.status)
-		},
-/*
-	movePlayer(key) {
-		// switch flag to ignoreKeypresses to true
-		this.player.movingPlayer(key, () => {
+		$("#gamePage").hide()
+		$("#tableRoom").hide()
+		$("#chairRoom").hide()
+		$("#vaseRoom").hide()
+		$("#page4").css("display","block")
+		$("#result").text(this.status)
+	},
+
+	movePlayer(key) { console.log("game.movePlayer");
+		if(this.ignoreKeypresses === false && (key === "ArrowLeft" || key === "ArrowRight" || key === "ArrowDown" || key === "ArrowUp")) {
+			console.log("ignoreKeypresses was falsewe should move");
+			//so when the ignor key is falase, turn this back on to true, and run the function below.  so the function below can only run once, meaning the button will only respond once. until the animation is finished. 
 			this.ignoreKeypresses = true
-			console.log(this.ignoreKeypresses);
+			//running the function, and when the animation is finished to false. 
+			this.player.movingPlayer(key, () => {
+				console.log("turning keypresses back on now");
+				this.ignoreKeypresses = false
 			}) 
-	},
-
-	disablePress(key){
-		if (this.ignoreKeypresses){
-			$(document).off("keydown",this.movePlayer(key))
-		} else if (this.ignoreKeypresses === false){
-			$(document).on("keydown",this.movePlayer(key))
 		}
-
-	},
-	*/
+	},	
 }
 
 $(document).on("keydown",(e) => {
 	$("#player").html(`${myGame.playerName}<br/><img id="playerbody" src="pics/body.png"/>`)
 	// console.log(e);
-	// myGame.movePlayer(e.key);
-	// myGame.disablePress(e.key)
-	myGame.player.movingPlayer(e.key)
+	myGame.movePlayer(e.key);
+	// myGame.player.movingPlayer(e.key)
 	myGame.findPlayerPosition(e.key)
 	myGame.pickUpItem(e.key)
 	myGame.movingThroughRooms(e.key)
@@ -225,8 +219,8 @@ $(document).on("keydown",(e) => {
 	myGame.showInventroy(e.key)
 	myGame.checkWin(e.key)
 
-	if(e.key === "1"){
-		console.log(`top:`,$("#player").position().top, `left:`,$("#player").position().left);
-	}
+	// if(e.key === "1"){
+	// 	console.log(`top:`,$("#player").position().top, `left:`,$("#player").position().left);
+	// }
 })
 

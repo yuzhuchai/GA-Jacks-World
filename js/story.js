@@ -3,13 +3,7 @@
 //click the "link" to go to the secons page: #page2{} display: inline-block. #page1,3,gamePage display: none 
 //click the button on page two: inisate the player object. with the input name. #page3{} display: inline-block. #page1,2,gamePage display: none 
 //page3: click on each corrosponding rooms, 
-//table room: all the pages display: none, gamepage display: flex,  #tableroom display:block
-
-
-
-
-
-
+//table room: all the pages display: none, gamepage display: flex,  #tableroom display:blocks
 
 const page = {
 	showPage2(){
@@ -42,8 +36,6 @@ const page = {
 		$("#vaseRoom").css("display","block")
 	},
 }
-
-
 
 
 $("#link1").on("click",() => {
