@@ -9,19 +9,6 @@ class Player{
 		$("#player").html(`${this.name}<br/>is in the`)
 	}
 
-	// movingPlayer(key){ 
-	// 	// console.log(stopfunc);
-	// 	if(key === "ArrowLeft" && $("#player").position().left > 0){
-	// 		$("#player").animate({left: "-=100px"},"fast")
-	// 	}else if (key === "ArrowRight" && $("#player").position().left < 500){
-	// 		$("#player").animate({left:"+=100px"},"fast") 
-	// 	} else if (key === "ArrowUp" && $("#player").position().top > 0){
-	// 		$("#player").animate({top: "-=100px"},"fast") 
-	// 	} else if (key === "ArrowDown" && $("#player").position().top < 400){
-	// 		$("#player").animate({top: "+=100px"},"fast") 
-	// 	}
-	// }
-
 
 	movingPlayer(key,stopfunc){ console.log("movingPlayer");
 		// console.log(stopfunc);

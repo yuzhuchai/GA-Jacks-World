@@ -6,6 +6,9 @@
 //table room: all the pages display: none, gamepage display: flex,  #tableroom display:blocks
 
 const page = {
+	str: "",
+	txt: "",
+	int: null,
 	showPage2(){
 		$("#page1").css("display","none")
 		$("#page2").css("display","block")
@@ -36,7 +39,6 @@ const page = {
 		$("#vaseRoom").css("display","block")
 	},
 }
-
 
 $("#link1").on("click",() => {
 	page.showPage2()

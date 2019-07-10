@@ -19,8 +19,6 @@ const myGame = {
 		this.player.initPlayer() 
 	},
 
-//write a loop that run 12 times. each time push a random index item in the old array into the new array. 
-
 	startGame(){
 		this.randomizeItems()
 		this.getNumberOfTurns()
@@ -45,9 +43,8 @@ const myGame = {
 	},
 	//game need to get a random number of turns between 20-25
 	getNumberOfTurns(){
-		this.turns = Math.floor(Math.random()*5)+50
+		this.turns = Math.floor(Math.random()*5)+20
 		$("#turn").text(this.turns)
-
 	},
 	//game need to decrease the number of turns when space bar and enter keys are pressed 
 	decreaseTurns(){
