@@ -2,6 +2,7 @@ const myGame = {
 	playerName: null,
 	player: null,
 	//storing images as objects to use in css later. 
+	imgArr: ["a1","a2","a3","b4","b5","b6","c7","c8","c9","i0","i0","i0"],
 	inventory: "",
 	shuffledImg: [],
 	turns: 20,
@@ -9,6 +10,8 @@ const myGame = {
 	tableStr: "a1a2a3i0",
 	chairStr: "b4b5b6i0",
 	vaseStr: "c7c8c9i0",
+	ignoreKeypresses: false,
+	status: "",
 
 	createPlayer(name){
 		this.playerName = name 
@@ -26,10 +29,10 @@ const myGame = {
 
 	shuffleImgArr(){
 		for (let i = 0; i < 12; i++){
-			let num = Math.floor(Math.random()*imgArr.length)
+			let num = Math.floor(Math.random()*this.imgArr.length)
 			console.log(num);
-			this.shuffledImg.push(imgArr[num])
-			imgArr.splice(num,1)
+			this.shuffledImg.push(this.imgArr[num])
+			this.imgArr.splice(num,1)
 		}
 	},
 
@@ -42,7 +45,7 @@ const myGame = {
 	},
 	//game need to get a random number of turns between 20-25
 	getNumberOfTurns(){
-		this.turns = Math.floor(Math.random()*5)+50
+		this.turns = Math.floor(Math.random()*5)+1
 		// $("#turn").text(this.turns)
 
 	},
@@ -57,7 +60,8 @@ const myGame = {
 	//game need to stop when the turn goes down to 0 and the user loses 
 	loseGame(){
 		if(this.turns === 0){
-			alert(`game over`)
+			this.status = "lost"
+			this.restartGame()
 		}
 
 	},
@@ -166,18 +170,54 @@ const myGame = {
 			let ccheck = cArr.sort().join("")
 			let vcheck = vArr.sort().join("")
 			if( tcheck === this.tableStr && ccheck === this.chairStr && vcheck === this.vaseStr){
-				alert("you win")
+				this.status = "won!!"
+				console.log(this.status);
+				this.restartGame()
 			}
 		}
 	},
 
-}
+	restartGame(){
+			this.imgArr = ["a1","a2","a3","b4","b5","b6","c7","c8","c9","i0","i0","i0"]
+			this.shuffledImg = []
+			this.inventory = ""
+			$("#inventory").children().remove()
+		for (let i = 0; i < 12; i++){
+			$(`#div${i}`).children().remove()
+		}
+			$("#gamePage").hide()
+			$("#tableRoom").hide()
+			$("#chairRoom").hide()
+			$("#vaseRoom").hide()
+			$("#page4").css("display","block")
+			$("#result").text(this.status)
+		},
+/*
+	movePlayer(key) {
+		// switch flag to ignoreKeypresses to true
+		this.player.movingPlayer(key, () => {
+			this.ignoreKeypresses = true
+			console.log(this.ignoreKeypresses);
+			}) 
+	},
 
+	disablePress(key){
+		if (this.ignoreKeypresses){
+			$(document).off("keydown",this.movePlayer(key))
+		} else if (this.ignoreKeypresses === false){
+			$(document).on("keydown",this.movePlayer(key))
+		}
+
+	},
+	*/
+}
 
 $(document).on("keydown",(e) => {
 	$("#player").html(`${myGame.playerName}<br/><img id="playerbody" src="pics/body.png"/>`)
 	// console.log(e);
-	myGame.player.movingPlayer(e.key);
+	// myGame.movePlayer(e.key);
+	// myGame.disablePress(e.key)
+	myGame.player.movingPlayer(e.key)
 	myGame.findPlayerPosition(e.key)
 	myGame.pickUpItem(e.key)
 	myGame.movingThroughRooms(e.key)

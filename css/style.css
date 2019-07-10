@@ -7,7 +7,7 @@ body{
 	font-weight: bold;
 }
 
-span{
+.linkk{
 	color: SteelBlue;
 }
 
@@ -23,12 +23,6 @@ span{
 }
 #page1{
 	display: block;
-}
-#page2{
-	/*display: block;*/
-}
-#page3{
-	/*display: block;*/
 }
 
 

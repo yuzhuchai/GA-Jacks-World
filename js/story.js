@@ -56,19 +56,21 @@ $("button").on("click",() => {
 	page.showPage3()
 })
 
-$("#linkTableRoom").on("click",() => {
+$(".linkTableRoom").on("click",() => {
 	// $(".rooms").css("display","block")
 	page.showTableRoom()
 	myGame.startGame()
+	$("#page4").hide()
 })
 
-$("#linkVaseRoom").on("click",() => {
+$(".linkVaseRoom").on("click",() => {
 	page.showVaseRoom()
 	myGame.startGame()
-
+	$("#page4").hide()
 })
 
-$("#linkChairRoom").on("click",() => {
+$(".linkChairRoom").on("click",() => {
 	page.showChairRoom()
 	myGame.startGame()
+	$("#page4").hide()
 })
