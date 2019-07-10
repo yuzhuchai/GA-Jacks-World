@@ -98,16 +98,6 @@ img{
 	position: relative;
 	display:none;
 }
-#tableRoom{
-	/*display: block;*/
-}
-#chairRoom{
-	/*display: block;*/
-}
-#vaseRoom{
-	/*display:block;*/
-}
-
 
 .space{
 	border:5px double SteelBlue;
@@ -146,3 +136,22 @@ img{
 	/*background-color: rgba(	70,130,180,.5);*/
 	/*border:3px dotted yellow;*/
 }
+
+.rules{
+	/*flashing the text with opacity.*/
+	color: rgba(255,105,180, 1);
+	animation-duration: 1s;
+	animation-name: flash;
+}
+@keyframes flash{
+	from {
+		color: rgba(255,105,180, 0);
+	}
+	to {
+		color: rgba(255,105,180, 1);
+	}
+}
+
+
+/*hover  rules*/
+

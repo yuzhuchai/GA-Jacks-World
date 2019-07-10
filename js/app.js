@@ -60,10 +60,7 @@ const myGame = {
 			this.status = "did a bad job!"
 			this.restartGame()
 		}
-
 	},
-	//game need to stop when the corrosponding imgs are moved into the correct div, player wins,
-
 
 	//player need to pick up the div with space bar. and drop it into the inventory. storying the images and inventory as objects, to use in css later. 
 	showRooms(){
@@ -168,7 +165,6 @@ const myGame = {
 			let vcheck = vArr.sort().join("")
 			if( tcheck === this.tableStr && ccheck === this.chairStr && vcheck === this.vaseStr){
 				this.status = "finally rearranged everything!!!"
-				console.log(this.status);
 				this.restartGame()
 			}
 		}
@@ -178,14 +174,14 @@ const myGame = {
 		this.imgArr = ["a1","a2","a3","b4","b5","b6","c7","c8","c9","i0","i0","i0"]
 		this.shuffledImg = []
 		this.inventory = ""
-		$("#inventory").children().remove()
-		for (let i = 0; i < 12; i++){
-			$(`#div${i}`).children().remove()
-		}
 		$("#gamePage").hide()
 		$("#tableRoom").hide()
 		$("#chairRoom").hide()
 		$("#vaseRoom").hide()
+		$("#inventory").children().remove()
+		for (let i = 0; i < 12; i++){
+			$(`#div${i}`).children().remove()
+		}
 		$("#page4").css("display","block")
 		$("#result").text(this.status)
 	},

@@ -9,6 +9,7 @@ const page = {
 	str: "",
 	txt: "",
 	int: null,
+	int: null,
 	showPage2(){
 		$("#page1").css("display","none")
 		$("#page2").css("display","block")
@@ -38,6 +39,7 @@ const page = {
 		$("#gamePage").css("display","flex")
 		$("#vaseRoom").css("display","block")
 	},
+
 }
 
 $("#link1").on("click",() => {
