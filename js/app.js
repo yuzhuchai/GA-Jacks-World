@@ -6,7 +6,10 @@ const myGame = {
 	shuffledImg: [],
 	turns: 20,
 	playerPos:"",
-	tableArray: ["a","a","a","i"],
+	tableStr: "a1a2a3i0",
+	chairStr: "b4b5b6i0",
+	vaseStr: "c7c8c9i0",
+
 	createPlayer(name){
 		this.playerName = name 
 		this.player = new Player(name)
@@ -37,9 +40,9 @@ const myGame = {
 			$(`#div${i}`).append(picc)
 		})
 	},
-	//game need to get a random number of turns between 15-20
+	//game need to get a random number of turns between 20-25
 	getNumberOfTurns(){
-		this.turns = Math.floor(Math.random()*5)+15
+		this.turns = Math.floor(Math.random()*5)+50
 		// $("#turn").text(this.turns)
 
 	},
@@ -143,31 +146,29 @@ const myGame = {
 	},
 //check after every action, 
 //push img name in the div into arrays. and compare the arry. so when the item dropps,push the name into array. 
-	checkWin(){
-		let t = $("#tableRoom").children()
-		let c = $("#chairRoom").children()
-		let v = $("#vaseRoom").children()
-		console.log(t[1]);
-		// for(let i = 0; i < 4; i++){
-		// 	${t[i]}.children()
-		// }
-/*
-		this.tArr = t.forEach((obj) => {
-			$(obj).children().attr("id")[0]
-		}).sort()
-
-		if (tArr === tableArray){
-			alert(`you win!`)
-		} 
-
-		this.cArr = c.forEach((obj) => {
-			$(obj).children().attr("id")[0]
-		})
-
-		this.vArr = v.forEach((obj) => {
-			$(obj).children().attr("id")[0]
-		})
-		*/
+	checkWin(key){
+		if(key === " " || key === "Enter"){
+			let t = $("#tableRoom").children()
+			let c = $("#chairRoom").children()
+			let v = $("#vaseRoom").children()
+			const tArr = []
+			const cArr = []
+			const vArr = []
+			for(let i = 0; i < 4; i++){
+				let titem = $(t[i]).children()[0]
+				let citem = $(c[i]).children()[0]
+				let vitem = $(v[i]).children()[0]
+				tArr.push($(titem).attr("id"))
+				cArr.push($(citem).attr("id"))
+				vArr.push($(vitem).attr("id"))
+			}
+			let tcheck = tArr.sort().join("")
+			let ccheck = cArr.sort().join("")
+			let vcheck = vArr.sort().join("")
+			if( tcheck === this.tableStr && ccheck === this.chairStr && vcheck === this.vaseStr){
+				alert("you win")
+			}
+		}
 	},
 
 }
@@ -176,12 +177,16 @@ const myGame = {
 $(document).on("keydown",(e) => {
 	$("#player").html(`${myGame.playerName}<br/><img id="playerbody" src="pics/body.png"/>`)
 	// console.log(e);
-	//player need to move arouns the screen with arrow keys. 
-	// myGame.checkWin()
 	myGame.player.movingPlayer(e.key);
 	myGame.findPlayerPosition(e.key)
 	myGame.pickUpItem(e.key)
 	myGame.movingThroughRooms(e.key)
 	myGame.showRooms()
 	myGame.showInventroy(e.key)
+	myGame.checkWin(e.key)
+
+	if(e.key === "1"){
+		console.log(`top:`,$("#player").position().top, `left:`,$("#player").position().left);
+	}
 })
+

@@ -14,27 +14,50 @@ class Player{
 		$("#player").html(`${this.name}<br/>is in the`)
 	}
 
-	//player need to move around in the div 
+/*	//player need to move around in the div 
 	movingPlayer(key){
-		// if($("#player").position().top <= 0 && key === "ArrowUp"){
-		// 	$("#player").animate({top: "+=0px"})
-		// } else if($("#player").position().top >= 550 && key === "ArrowDown"){
-		// 	$("#player").animate({top: "-=0px"})
-		// } else if($("#player").position().left <= 0 && key === "ArrowLeft"){
-		// 	$("#player").animate({left: "+=0px"})
-		// } else if ($("#player").position().left >= 550 && key === "Arrowright"){
-		// 	$("#player").animate({left: "-=0px"})
-		// }else {
-			if(key === "ArrowUp" && $("#player").position().top >= 0){
-				$("#player").animate({top: "-=50px"})
-			}else if(key === "ArrowDown" && $("#player").position().top <= 550){
-				$("#player").animate({top: "+=50px"})
-			}else if(key === "ArrowLeft" && $("#player").position().left >= 0){
-				$("#player").animate({left: "-=50px"})
-			}else if(key === "ArrowRight" && $("#player").position().top <= 550){
-				$("#player").animate({left:"+=50px"})
+		if(key === "ArrowUp" && $("#player").position().top >= 0){
+			$("#player").animate({top: "-=100px"},"fast")
+		}else if(key === "ArrowDown" && $("#player").position().top <= 550){
+			$("#player").animate({top: "+=100px"},"fast")
+		}else if(key === "ArrowLeft" && $("#player").position().left >= 0){
+			$("#player").animate({left: "-=100px"},"fast")
+		}else if(key === "ArrowRight" && $("#player").position().top <= 550){
+			$("#player").animate({left:"+=100px"},"fast")
+		}
+	}
+	*/
+
+
+	movingPlayer(key){
+	//moving left: if the left position < 0, cannot move left, but can move right. 
+		if(key === "ArrowLeft"){
+			if($("#player").position().left === 0){
+				$("#player").animate({left: "-=0px"},"fast")
+			}else {
+				$("#player").animate({left: "-=100px"},"fast")
 			}
-		// }
+	//moving right: if player left position is 0, can move right, but if position left : 500 cant move right  
+		}else if (key === "ArrowRight"){
+			if($("#player").position().left === 500){
+				$("#player").animate({left:"+=0px"},"fast")	
+			} else {
+			$("#player").animate({left:"+=100px"},"fast")
+			}
+	//in the beginning, -100 arrow down can move, but after	
+		} else if (key === "ArrowUp"){
+			if($("#player").position().top === 0){
+				$("#player").animate({top:"+=0px"},"fast")	
+			}else {
+				$("#player").animate({top: "-=100px"},"fast")
+			}
+		} else if (key === "ArrowDown"){
+			if($("#player").position().top === 400){
+				$("#player").animate({top: "+=0px"},"fast")
+			} else {
+				$("#player").animate({top: "+=100px"},"fast")
+			}
+		}
 	}
 }
 
