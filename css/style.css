@@ -194,7 +194,7 @@ p{
 	margin-top:10px;
 }
 
-#dropthings, #thedoor{
+#dropthing, #thedoor, #pickup{
 	text-align: center;
 	position: absolute;
 	/*border:black solid 2px;*/
@@ -203,12 +203,12 @@ p{
 	top: 300px;
 	animation: flashing 1s infinite alternate;
 	animation-iteration-count: 5;
-	display: none;
+	display: block;
 }
 
 #thedoor{
 	left: 650px;
 }
-#dropthings{
+#dropthing, #pickup{
 	left: -200px;
 }

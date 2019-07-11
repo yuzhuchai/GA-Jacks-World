@@ -24,6 +24,9 @@ const myGame = {
 		this.randomizeItems()
 		this.getNumberOfTurns()
 		this.showRooms()
+		$("#pickup").show()
+		$("#thedoor").show()
+		$("#dropthing").hide()
 	},
 
 	shuffleImgArr(){
@@ -38,7 +41,7 @@ const myGame = {
 	randomizeItems(){
 		this.shuffleImgArr()
 		this.shuffledImg.forEach((str,i) => {
-			let picc = $(`<img id=${str} src="./pics/0${str[1]}.png">`)
+			let picc = $(`<img id=${str} src="pics/0${str[1]}.png">`)
 			$(`#div${i}`).append(picc)
 		})
 	},
@@ -99,15 +102,15 @@ const myGame = {
 	pickUpItem(key){
 		if(this.currentRoom === "table" && key === " " && this.inventory === "" && $(`#div${this.playerPos-1}`).children().attr("id") !== "i0"){
 			this.inventory = $(`#div${this.playerPos-1}`).children()
-			$(`#div${this.playerPos-1}`).append($(`<img id=i0 src="./pics/00.png">`))
+			$(`#div${this.playerPos-1}`).append($(`<img id=i0 src="pics/00.png">`))
 			this.decreaseTurns()
 		}else if (this.currentRoom === "chair" && key === " " && this.inventory === "" && $(`#div${this.playerPos+3}`).children().attr("id") !== "i0"){
 			this.inventory = $(`#div${this.playerPos+3}`).children()
-			$(`#div${this.playerPos+3}`).append($(`<img id=i0 src="./pics/00.png">`))
+			$(`#div${this.playerPos+3}`).append($(`<img id=i0 src="pics/00.png">`))
 			this.decreaseTurns()
 		}else if (this.currentRoom === "vase" && key === " " && this.inventory === "" && $(`#div${this.playerPos+7}`).children().attr("id") !== "i0"){
 			this.inventory = $(`#div${this.playerPos+7}`).children()
-			$(`#div${this.playerPos+7}`).append($(`<img id=i0 src="./pics/00.png">`))
+			$(`#div${this.playerPos+7}`).append($(`<img id=i0 src="pics/00.png">`))
 			this.decreaseTurns()
 		} else if(key === " " && this.currentRoom === "table" && this.inventory !== "" && $(`#div${this.playerPos-1}`).children().attr("id") === "i0"){
 			$(`#div${this.playerPos-1}`).children().remove()
@@ -176,11 +179,12 @@ const myGame = {
 		}
 	},
 
-	restartGame(){
-		this.keycounts = undefined 
+	restartGame(){ 
 		this.imgArr = ["a1","a2","a3","b4","b5","b6","c7","c8","c9","i0","i0","i0"]
 		this.shuffledImg = []
 		this.inventory = ""
+		$("#thedoor").remove()
+		$("#pickup").remove()
 		$("#gamePage").hide()
 		$("#tableRoom").hide()
 		$("#chairRoom").hide()
@@ -207,14 +211,18 @@ const myGame = {
 	},	
 
 	reminder(key){
-
-		if (this.inventory !== ""){
-			$("#dropandpickup").text("drop")
-			$("#dropthings").show()
-		} else if (this.inventory === ""){
-			$("#dropthings").show()
+		if (key === " " || key === "Enter") {
+			this.keycounts += 1
 		}
-	}
+		if (key === "Enter"){
+			$("#thedoor").hide()
+		}else if (key === " " && this.inventory!==""){
+			$("#pickup").hide()
+			$("#dropthing").show()
+		}else if(key === " " && $("#pickup").css("display") === "none"){
+			$("#dropthing").remove()
+		}
+	},
 }
 
 $(document).on("keydown",(e) => {
@@ -228,10 +236,7 @@ $(document).on("keydown",(e) => {
 	myGame.showRooms()
 	myGame.showInventroy(e.key)
 	myGame.checkWin(e.key)
-	if(e.key === "Enter" || e.key === " "){
-		myGame.keycounts += 1
-		console.log(myGame.keycounts, `keycounts`)
-	}
+	myGame.reminder(e.key)
 	// if(e.key === "1"){
 	// 	console.log(`top:`,$("#player").position().top, `left:`,$("#player").position().left);
 	// }
