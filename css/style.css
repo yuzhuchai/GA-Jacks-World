@@ -1,3 +1,6 @@
+html{
+	cursor: url(../pics/cursorpink.png), auto;
+}
 body{
 	background-color: white;
 	/*background-color: #1e203a;*/
@@ -32,6 +35,7 @@ input, button, input.inputbox, textarea{
 	font-weight: bold;
 	background-color: white;
 	text-shadow: 0 0 0.2em;
+	cursor: url(../pics/cursorpink.png), auto;
 }
 
 input {
@@ -49,6 +53,7 @@ input {
 	/*display: flex;*/
 	display: none;
 	flex-direction: column;
+	cursor: none;
 }
 #metersContainer{
 	/*border:3px dotted red;*/
@@ -152,6 +157,7 @@ img{
 	/*flashing the text with opacity.*/
 	color: rgba(255,105,180, 1);
 	animation: flash .5s infinite alternate;
+	cursor: url(../pics/cursorblue.png), auto;
 }
 @keyframes flash{
 	from {
@@ -201,17 +207,19 @@ p{
 	width: 150px;
 	font-size: 20px;
 	top: 300px;
-	animation: flashing 1s alternate;
+	animation: flash 1s alternate;
 	animation-iteration-count: 5;
 	display: block;
+	color: hotpink;
+	text-shadow: 0 0 0.5em black;
 }
 
 #thedoor{
 	left: 650px;
 }
 #dropthing, #pickup{
+	top:400px;
 	left: -200px;
-	top:100px;
 }
 
 #doorpic{
@@ -219,13 +227,13 @@ p{
 	height:50%;
 	width: 50%;
 	animation: shiny 1s alternate;
-	animation-iteration-count: 5;
+	animation-iteration-count: 6;
 }
 
 .spacebar{
 	float: left;
 	animation: shiny 1s alternate;
-	animation-iteration-count: 5;
+	animation-iteration-count: 6;
 }
 
 @keyframes shiny{

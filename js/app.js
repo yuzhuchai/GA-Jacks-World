@@ -14,6 +14,7 @@ const myGame = {
 	status: "",
 	keycounts: 0,
 
+
 	createPlayer(name){
 		this.playerName = name 
 		this.player = new Player(name)
@@ -242,3 +243,7 @@ $(document).on("keydown",(e) => {
 	// }
 })
 
+$(document).on("mousemove",(e) => {
+
+
+})
