@@ -159,8 +159,8 @@ p{
 	background-color: rgba(0,0,0, .8);
 	border-radius: 10px;
 	position:absolute;
-	color: white;
-	text-shadow: 0 0 0.2em hotpink;
+	color: black;
+	text-shadow: 2px 2px 0.5em white;
 	display: none;
 }
 #spacebar:hover #spacedirection {
@@ -171,7 +171,6 @@ p{
 #arrows:hover #arrowdirection {
 	display: block;
 	top:-140px;
-	left:200px;
 }
 
 #enterkey:hover #enterdirection {
