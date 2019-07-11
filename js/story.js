@@ -52,6 +52,13 @@ $("button").on("click",() => {
 	page.showPage3()
 })
 
+$(document).on("keydown",(e) => {	
+	if(e.key === "Enter" && $("#page2").css("display") === "block"){
+		myGame.createPlayer($("input").val())
+		page.showPage3()
+	}
+})
+
 $(".linkTableRoom").on("click",() => {
 	// $(".rooms").css("display","block")
 	page.showTableRoom()

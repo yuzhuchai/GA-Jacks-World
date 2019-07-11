@@ -59,8 +59,7 @@ input {
 }
 
 #theRoom{
- 	/*border:3px dotted blue;*/
-
+   font-size: 40px; 
 }
 
 #turn{
@@ -69,9 +68,21 @@ input {
 	height: 100px;
 	margin: auto 0;
 	color:black;
-	font-size: 40px;
+	font-size: 50px;
 	text-align: center;
+	/*animation: flashing 1s infinite alternate;*/
 }
+
+@keyframes flashing{
+	from {
+		color: rgba(0,0,0,1);
+	}
+	to {
+		color: rgba(0,0,0,0.1);
+	}
+}
+
+
 #inventory{
 	/*border: 3px dotted blue;*/
 	width:100px;
@@ -101,7 +112,7 @@ img{
 .space{
 	/*border:5px double SteelBlue;*/
 	background-color: rgba(0,0,0,0.1);
-	border-radius: 20px;
+	border-radius: 30px;
 	width: 300px;
 	height: 280px;
 	position: absolute;
@@ -179,6 +190,25 @@ p{
 }
 
 
+.meterr{
+	margin-top:10px;
+}
 
-/*hover  rules*/
+#dropthings, #thedoor{
+	text-align: center;
+	position: absolute;
+	/*border:black solid 2px;*/
+	width: 150px;
+	font-size: 20px;
+	top: 300px;
+	animation: flashing 1s infinite alternate;
+	animation-iteration-count: 5;
+	display: none;
+}
 
+#thedoor{
+	left: 650px;
+}
+#dropthings{
+	left: -200px;
+}

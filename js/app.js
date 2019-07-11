@@ -12,6 +12,7 @@ const myGame = {
 	vaseStr: "c7c8c9i0",
 	ignoreKeypresses: false,
 	status: "",
+	keycounts: 0,
 
 	createPlayer(name){
 		this.playerName = name 
@@ -44,20 +45,25 @@ const myGame = {
 	//game need to get a random number of turns between 20-25
 	getNumberOfTurns(){
 		this.turns = Math.floor(Math.random()*5)+20
-		$("#turn").text(this.turns)
+		$("#turn").html(`<p class="meterr">${this.turns}</p>`)
 	},
 	//game need to decrease the number of turns when space bar and enter keys are pressed 
 	decreaseTurns(){
 		//if(key === " " || key === "Enter"){
 			this.turns -=1 
 		//}
-		$("#turn").text(this.turns)
+		$("#turn").html(`<p class="meterr">${this.turns}</p>`)
+		if(this.turns <= 5 && this.turns > 0){
+			$("#turn").css("animation","flash 1s infinite alternate")
+		} else{
+			$("#turn").css("animation","none")
+		}
 		this.loseGame()
 	},
 	//game need to stop when the turn goes down to 0 and the user loses 
 	loseGame(){
 		if(this.turns === 0){
-			this.status = "did a bad job!"
+			this.status = "DID A BAD JOB!"
 			this.restartGame()
 		}
 	},
@@ -73,7 +79,7 @@ const myGame = {
 		if ($("#vaseRoom").css("display") === "block"){
 			this.currentRoom = "vase"
 		}
-		$("#theRoom").text(`room of ${this.currentRoom}s`)
+		$("#theRoom").html(`<p class="meterr">room of ${this.currentRoom}s</p>`)
 	},
 	//looking for the payers position, I am also usign this function to determin the div's position. 
 	findPlayerPosition(key){
@@ -171,6 +177,7 @@ const myGame = {
 	},
 
 	restartGame(){
+		this.keycounts = undefined 
 		this.imgArr = ["a1","a2","a3","b4","b5","b6","c7","c8","c9","i0","i0","i0"]
 		this.shuffledImg = []
 		this.inventory = ""
@@ -198,6 +205,16 @@ const myGame = {
 			}) 
 		}
 	},	
+
+	reminder(key){
+
+		if (this.inventory !== ""){
+			$("#dropandpickup").text("drop")
+			$("#dropthings").show()
+		} else if (this.inventory === ""){
+			$("#dropthings").show()
+		}
+	}
 }
 
 $(document).on("keydown",(e) => {
@@ -211,7 +228,10 @@ $(document).on("keydown",(e) => {
 	myGame.showRooms()
 	myGame.showInventroy(e.key)
 	myGame.checkWin(e.key)
-
+	if(e.key === "Enter" || e.key === " "){
+		myGame.keycounts += 1
+		console.log(myGame.keycounts, `keycounts`)
+	}
 	// if(e.key === "1"){
 	// 	console.log(`top:`,$("#player").position().top, `left:`,$("#player").position().left);
 	// }
