@@ -140,17 +140,45 @@ img{
 .rules{
 	/*flashing the text with opacity.*/
 	color: rgba(255,105,180, 1);
-	animation-duration: 1s;
-	animation-name: flash;
+	animation: flash .5s infinite alternate;
 }
 @keyframes flash{
 	from {
-		color: rgba(255,105,180, 0);
+		color: rgba(255,105,180, .1);
 	}
 	to {
 		color: rgba(255,105,180, 1);
 	}
 }
+
+p{
+	margin: 10px;
+}
+.showup{
+	font-size: 15px;
+	background-color: rgba(0,0,0, .8);
+	border-radius: 10px;
+	position:absolute;
+	color: white;
+	text-shadow: 0 0 0.2em hotpink;
+	display: none;
+}
+#spacebar:hover #spacedirection {
+	display: block;
+	top:-130px;
+}
+
+#arrows:hover #arrowdirection {
+	display: block;
+	top:-140px;
+	left:200px;
+}
+
+#enterkey:hover #enterdirection {
+	display: block;
+	top:-150px;
+}
+
 
 
 /*hover  rules*/
