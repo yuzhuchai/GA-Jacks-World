@@ -61,19 +61,19 @@ $(document).on("keydown",(e) => {
 
 $(".linkTableRoom").on("click",() => {
 	// $(".rooms").css("display","block")
-	myGame.startGame()
 	page.showTableRoom()
+	myGame.startGame()
 	$("#page4").hide()
 })
 
 $(".linkVaseRoom").on("click",() => {
-	myGame.startGame()
 	page.showVaseRoom()
+	myGame.startGame()
 	$("#page4").hide()
 })
 
 $(".linkChairRoom").on("click",() => {
-	myGame.startGame()
 	page.showChairRoom()
+	myGame.startGame()
 	$("#page4").hide()
 })

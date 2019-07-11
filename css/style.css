@@ -195,13 +195,13 @@ p{
 }
 
 #dropthing, #thedoor, #pickup{
-	text-align: center;
+	text-align: left;
 	position: absolute;
 	/*border:black solid 2px;*/
 	width: 150px;
 	font-size: 20px;
 	top: 300px;
-	animation: flashing 1s infinite alternate;
+	animation: flashing 1s alternate;
 	animation-iteration-count: 5;
 	display: block;
 }
@@ -211,4 +211,28 @@ p{
 }
 #dropthing, #pickup{
 	left: -200px;
+	top:100px;
+}
+
+#doorpic{
+	float: left;
+	height:50%;
+	width: 50%;
+	animation: shiny 1s alternate;
+	animation-iteration-count: 5;
+}
+
+.spacebar{
+	float: left;
+	animation: shiny 1s alternate;
+	animation-iteration-count: 5;
+}
+
+@keyframes shiny{
+	from {
+		opacity: 1;
+	}
+	to{
+		opacity: 0.3;
+	}
 }
