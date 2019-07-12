@@ -5,12 +5,11 @@ class Player{
 	}
 
 	initPlayer(){
-		console.log("player is created");
 		$("#player").html(`${this.name}<br/>is in the`)
 	}
 
 
-	movingPlayer(key,stopfunc){ console.log("movingPlayer");
+	movingPlayer(key,stopfunc){ 
 		// console.log(stopfunc);
 		if(key === "ArrowLeft" && $("#player").position().left > 0){
 			$("#player").animate({left: "-=100px"},"fast",stopfunc)

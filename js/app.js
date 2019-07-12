@@ -33,7 +33,6 @@ const myGame = {
 	shuffleImgArr(){
 		for (let i = 0; i < 12; i++){
 			let num = Math.floor(Math.random()*this.imgArr.length)
-			console.log(num);
 			this.shuffledImg.push(this.imgArr[num])
 			this.imgArr.splice(num,1)
 		}
@@ -198,14 +197,12 @@ const myGame = {
 		$("#result").text(this.status)
 	},
 
-	movePlayer(key) { console.log("game.movePlayer");
+	movePlayer(key) { 
 		if(this.ignoreKeypresses === false && (key === "ArrowLeft" || key === "ArrowRight" || key === "ArrowDown" || key === "ArrowUp")) {
-			console.log("ignoreKeypresses was falsewe should move");
 			//so when the ignor key is falase, turn this back on to true, and run the function below.  so the function below can only run once, meaning the button will only respond once. until the animation is finished. 
 			this.ignoreKeypresses = true
 			//running the function, and when the animation is finished to false. 
 			this.player.movingPlayer(key, () => {
-				console.log("turning keypresses back on now");
 				this.ignoreKeypresses = false
 			}) 
 		}

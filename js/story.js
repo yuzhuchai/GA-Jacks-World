@@ -13,13 +13,11 @@ const page = {
 	showPage2(){
 		$("#page1").css("display","none")
 		$("#page2").css("display","block")
-		console.log("go to page 2");
 	},
 
 	showPage3(){
 		$("#page2").css("display","none")
 		$("#page3").css("display","block")
-		console.log("go to page three");
 	},
 
 	showTableRoom(){
